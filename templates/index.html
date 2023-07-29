@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Benzinga Neuro Plagiarism Check</title>
+  </head>
+
+  <body>
+    <h1>Benzinga Neuro Plagiarism Checker</h1>
+
+    <form action="/" method="post">
+      <div>
+        <label for="original_content">Original Content (or URL):</label><br />
+        <textarea
+          id="original_content"
+          name="original_content"
+          rows="10"
+          cols="50"
+          required
+        >
+{{ request.form['original_content'] }}</textarea
+        >
+      </div>
+
+      <div>
+        <label for="test_content">Test Content (HTML):</label><br />
+        <textarea
+          id="test_content"
+          name="test_content"
+          rows="10"
+          cols="50"
+          required
+        >
+{{ request.form['test_content'] }}</textarea
+        >
+      </div>
+
+      <div>
+        <input type="submit" value="Check Plagiarism" />
+      </div>
+    </form>
+
+    {% if feedback %}
+    <h2>Results:</h2>
+    <p>Similiarity Score: {{ score }}</p>
+    <p>Feedback: {{ feedback }}</p>
+    <p>Highlighted Content:</p>
+    <div style="border: 1px solid black; padding: 10px">
+      {{ highlighted_content|safe }}
+    </div>
+    {% endif %}
+  </body>
+</html>
