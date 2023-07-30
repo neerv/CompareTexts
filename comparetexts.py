@@ -65,11 +65,11 @@ HEADERS = {
 
 
 def get_article():
-    print("Please enter your article (finish with 'BZNEURO'):")
+    print("Please enter your article (finish with 'done'):")
     lines = []
     while True:
         line = input()
-        if line == "BZNEURO":
+        if line == "done":
             break
         lines.append(line)
     return '\n'.join(lines)
